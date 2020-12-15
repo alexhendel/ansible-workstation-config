@@ -17,5 +17,5 @@ To run the setup script `sudo apt install -y ansible git` must be run first.
 Then go ahead and run:
 
 ```
-ansible-pull -U https://github.com/alexhendel/ansible-workstation-config.git
+ansible-pull -KU https://github.com/alexhendel/ansible-workstation-config.git
 ```
