@@ -5,6 +5,7 @@
   vars:
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
     user: '{{ansible_user}}'
+    user_home: '{{ansible_env.HOME}}'
   roles:
     # get everything latest version
     - update-all

@@ -1,7 +1,7 @@
 - name: install nvm
   git:
     repo: https://github.com/nvm-sh/nvm.git
-    dest: ~/.nvm
+    dest: '{{user_home}}/.nvm'
 - name: setup .*rc nvm dir variables
   lineinfile:
     path: '{{item.dest}}'
