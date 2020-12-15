@@ -10,10 +10,10 @@
     line: '{{item.line}}'
   with_items:
     # zsh
-    - { dest: '~/.zshrc', line: 'export NVM_DIR="$HOME/.nvm"' }
-    - { dest: '~/.zshrc', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' }
-    - { dest: '~/.zshrc', line: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' }
+    - { dest: '{{user_home}}/.zshrc', line: 'export NVM_DIR="$HOME/.nvm"' }
+    - { dest: '{{user_home}}/.zshrc', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' }
+    - { dest: '{{user_home}}/.zshrc', line: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' }
     # bash
-    - { dest: '~/.bashrc', line: 'export NVM_DIR="$HOME/.nvm"' }
-    - { dest: '~/.bashrc', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' }
-    - { dest: '~/.bashrc', line: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' }
+    - { dest: '{{user_home}}/.bashrc', line: 'export NVM_DIR="$HOME/.nvm"' }
+    - { dest: '{{user_home}}/.bashrc', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' }
+    - { dest: '{{user_home}}/.bashrc', line: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' }
