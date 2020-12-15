@@ -1,0 +1,2 @@
+- name: configure git pager
+  command: 'git config --global core.pager "less -X -F"'

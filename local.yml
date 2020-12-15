@@ -1,0 +1,16 @@
+---
+- hosts: local
+  connection: local
+  vars:
+    ohmyzsh_installer: ~/.ohmyzsh-install.sh
+    user: '{{ansible_user}}'
+  roles:
+    # get everything latest version
+    - update-all
+    # packages
+    - zsh
+    - oh-my-zsh
+    # nvm
+    - node-version-manager
+    # git
+    - git-config

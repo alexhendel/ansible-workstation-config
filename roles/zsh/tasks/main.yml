@@ -1,0 +1,5 @@
+- name: install zsh
+  become: yes
+  apt:
+    name: zsh
+    update_cache: true

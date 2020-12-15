@@ -1,0 +1,7 @@
+- name: update all packages
+  become: yes
+  apt:
+    update_cache: true
+    upgrade: dist
+    autoclean: yes
+    autoremove: yes
