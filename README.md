@@ -12,6 +12,8 @@ It also does:
 - update & upgrade all packages to latest version
 - add some git configuration
 
+## Run the Script
+
 To run the setup script `sudo apt install -y ansible git` must be run first.
 
 Then go ahead and run:
@@ -19,3 +21,9 @@ Then go ahead and run:
 ```
 ansible-pull -KU https://github.com/alexhendel/ansible-workstation-config.git
 ```
+
+## Supported Distros
+
+- Debian
+- Ubuntu
+- PopOS!
