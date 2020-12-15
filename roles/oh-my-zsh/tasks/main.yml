@@ -2,6 +2,7 @@
   stat:
     path: ~/.oh-my-zsh
   register: omzconfig
+  debug: var=omzconfig
 - name: get oh-my-zsh installer
   get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -13,7 +14,7 @@
 - name: install oh-my-zsh
   command: '{{ohmyzsh_installer}}'
   when: not omzconfig.stat.exists=false
-- name: change user shell to zsh 
+- name: change user shell to zsh
   become: yes
   user:
     name: '{{user}}'
