@@ -1,5 +1,6 @@
 ---
-- hosts: local
+- name: workstation configuration
+  hosts: localhost
   connection: local
   vars:
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
