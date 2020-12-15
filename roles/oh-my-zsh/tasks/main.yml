@@ -1,6 +1,6 @@
 - name: check of oh-my-zsh is already installed and configured
   stat:
-    path: ~/.oh-my-zsh
+    path: '/home/{{user}}/.oh-my-zsh'
   register: omzconfig
 - name: get oh-my-zsh installer
   get_url:
