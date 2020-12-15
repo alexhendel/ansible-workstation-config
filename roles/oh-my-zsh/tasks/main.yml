@@ -1,3 +1,7 @@
+- name: check of oh-my-zsh is already installed and configured
+  stat:
+    path: ~/.oh-my-zsh
+  register: omzconfig
 - name: get oh-my-zsh installer
   get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -5,12 +9,10 @@
     mode: 0755
     owner: '{{user}}'
     group: '{{user}}'
-- name: ensure oh-my-zsh is not configured
-  file: 
-    path: ~/.oh-my-zsh
-    state: absent
+  when: omzconfig.stat.exists = false
 - name: install oh-my-zsh
-  command: '{{omz_installer}}'
+  command: '{{ohmyzsh_installer}}'
+  when: omzconfig.stat.exists = false
 - name: change user shell to zsh 
   become: yes
   user:
@@ -21,8 +23,10 @@
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     dest:  '~/.oh-my-zsh/custom/themes/powerlevel10k'
     depth: 1
+  when: omzconfig.stat.exists = false
 - name: set p10k theme
   lineinfile:
     path: ~/.zshrc
     regexp: '^ZSH_THEME='
     line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+  when: omzconfig.stat.exists = false
