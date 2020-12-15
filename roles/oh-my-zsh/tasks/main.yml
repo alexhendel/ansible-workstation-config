@@ -2,7 +2,6 @@
   stat:
     path: ~/.oh-my-zsh
   register: omzconfig
-  debug: var=omzconfig
 - name: get oh-my-zsh installer
   get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
