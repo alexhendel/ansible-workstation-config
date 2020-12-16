@@ -16,3 +16,5 @@
     - node-version-manager
     # git
     - git-config
+    # alias
+    - aliases

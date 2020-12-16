@@ -1,0 +1,29 @@
+- name: copy .aliases file
+  template:
+    src: .aliases.j2
+    dest: '{{user_home}}/.aliases'
+    owner: '{{user}}'
+    group: '{{user}}'
+    mode: 0644
+- name: check for .bashrc
+  stat:
+    path: '{{user_home}}/.bashrc'
+  register: bashrc
+- name: apply aliases to .bashrc
+  lineinfile:
+    path: '{{user_home}}/.bashrc'
+    insertbefore: BOF
+    line: 'source ~/.aliases'
+    state: present
+  when: bashrc.stat.exists
+- name: check for .zshrc
+  stat:
+    path: '{{user_home}}/.zshrc'
+  register: zshrc
+- name: apply aliases to .zshrc
+  lineinfile:
+    path: '{{user_home}}/.zshrc'
+    insertbefore: BOF
+    line: 'source ~/.aliases'
+    state: present
+  when: zshrc.stat.exists
