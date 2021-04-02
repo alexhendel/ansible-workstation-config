@@ -27,3 +27,4 @@ ansible-pull -KU https://github.com/alexhendel/ansible-workstation-config.git
 - Debian
 - Ubuntu
 - PopOS!
+- Fedora
