@@ -1,0 +1,6 @@
+package_list:
+  - htop
+  - ansible
+  - git
+  - git-lfs
+  - net-tools

@@ -7,6 +7,8 @@
     user: '{{ansible_user}}'
     user_home: '{{ansible_env.HOME}}'
   roles:
+    # packages
+    - packages
     # get everything latest version
     - update-all
     # packages

@@ -1,6 +1,6 @@
 - name: copy .aliases file
   template:
-    src: .aliases.j2
+    src: ".aliases.{{ansible_os_family | lower}}.j2"
     dest: '{{user_home}}/.aliases'
     owner: '{{user}}'
     group: '{{user}}'
