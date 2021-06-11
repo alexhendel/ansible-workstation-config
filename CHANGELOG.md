@@ -1,3 +1,7 @@
+# v1.2
+
+- add ssh agent loading in .profile
+
 # v1.1
 
 - add Fedora support
