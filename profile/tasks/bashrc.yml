@@ -1,0 +1,11 @@
+- name: check for .bashrc
+  stat:
+    path: '{{user_home}}/.bashrc'
+  register: bashrc
+- name: apply profile to .bashrc
+  lineinfile:
+    path: '{{user_home}}/.bashrc'
+    insertbefore: BOF
+    line: 'source ~/.profile'
+    state: present
+  when: bashrc.stat.exists

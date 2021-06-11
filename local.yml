@@ -18,5 +18,6 @@
     - node-version-manager
     # git
     - git-config
-    # alias
+    # alias & profile
     - aliases
+    - profile
