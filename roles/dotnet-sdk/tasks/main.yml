@@ -1,0 +1,26 @@
+- name: check dotnet installation
+  stat:
+    path: "{{user_home}}/.dotnet/"
+  register: dotnet_path
+- name: download dotnet installation script
+  get_url:
+    url: https://dot.net/v1/dotnet-install.sh
+    dest: ~/dotnet-install.sh
+    mode: 0755
+    owner: "{{user}}"
+    group: "{{user}}"
+  when: not dotnet_path.stat.exists
+- name: run dotnet installation script
+  command: "~/dotnet-install.sh --version {{dotnet_version}} --runtime aspnetcore"
+  when: not dotnet_path.stat.exists
+- name: add dotnet to $PATH
+  become: true
+  copy:
+    dest: /etc/profile.d/dotnet-path.sh
+    content: "PATH=$PATH:{{user_home}}/.dotnet/"
+  when: not dotnet_path.stat.exists
+- name: remove dotnet install script
+  file:
+    path: ~/dotnet-install.sh
+    state: absent
+  when: not dotnet_path.stat.exists
