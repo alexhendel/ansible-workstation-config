@@ -2,6 +2,10 @@
 - name: workstation configuration
   hosts: localhost
   connection: local
+  vars_prompt:
+    - name: install_zsh
+      prompt: Do you want to install zsh (yes/no)?
+      private: no
   vars:
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
     user: '{{ansible_user}}'
@@ -12,8 +16,10 @@
     # get everything latest version
     - update-all
     # packages
-    - zsh
-    - oh-my-zsh
+    - role: zsh
+      when: install_zsh
+    - role: oh-my-zsh
+      when: install_zsh
     # nvm
     - node-version-manager
     # git
