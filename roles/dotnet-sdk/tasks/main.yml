@@ -11,7 +11,7 @@
     group: "{{user}}"
   when: not dotnet_path.stat.exists
 - name: run dotnet installation script
-  command: "~/dotnet-install.sh --version {{dotnet_version}} --runtime aspnetcore"
+  command: "~/dotnet-install.sh --version {{dotnet_version}}"
   when: not dotnet_path.stat.exists
 - name: add dotnet to $PATH
   become: true
