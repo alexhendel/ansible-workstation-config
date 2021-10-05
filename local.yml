@@ -13,7 +13,7 @@
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
     user: '{{ansible_user}}'
     user_home: '{{ansible_env.HOME}}'
-    dotnet_version: "5.0.0"
+    dotnet_version: "5.0"
   roles:
     # packages
     - packages
