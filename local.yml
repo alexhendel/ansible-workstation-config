@@ -17,9 +17,9 @@
     - update-all
     # packages
     - role: zsh
-      when: install_zsh
+      when: install_zsh | bool
     - role: oh-my-zsh
-      when: install_zsh
+      when: install_zsh | bool
     # nvm
     - node-version-manager
     # git
