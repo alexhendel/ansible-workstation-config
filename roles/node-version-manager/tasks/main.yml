@@ -3,17 +3,33 @@
     repo: https://github.com/nvm-sh/nvm.git
     version: v0.38.0
     dest: '{{user_home}}/.nvm'
-- name: setup .*rc nvm dir variables
+  # zsh
+- name: .zshrc check
+  stat:
+    path: '{{user_home}}/.zshrc'
+  register: zshrc_conf
+- name: setup .zshrc nvm dir variables
   lineinfile:
     path: '{{item.dest}}'
     state: present
     line: '{{item.line}}'
   with_items:
-    # zsh
     - { dest: '{{user_home}}/.zshrc', line: 'export NVM_DIR="$HOME/.nvm"' }
     - { dest: '{{user_home}}/.zshrc', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' }
     - { dest: '{{user_home}}/.zshrc', line: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' }
-    # bash
+  when: zshrc_conf.stat.exists
+  # bash
+- name: .bashrc check
+  stat:
+    path: '{{user_home}}/.bashrc'
+  register: bashrc_conf
+- name: setup .bashrc nvm dir variables
+  lineinfile:
+    path: '{{item.dest}}'
+    state: present
+    line: '{{item.line}}'
+  with_items:
     - { dest: '{{user_home}}/.bashrc', line: 'export NVM_DIR="$HOME/.nvm"' }
     - { dest: '{{user_home}}/.bashrc', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' }
     - { dest: '{{user_home}}/.bashrc', line: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' }
+  when: bashrc_conf.stat.exists
