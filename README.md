@@ -18,8 +18,15 @@ To run the setup script `sudo apt install -y ansible git` must be run first.
 
 Then go ahead and run:
 
+```bash
+# change the install variables as you see fit!
+ansible-pull -KU https://github.com/alexhendel/ansible-workstation-config.git -e install_dotnetsdk=no -e install_zsh=no
 ```
-ansible-pull -KU https://github.com/alexhendel/ansible-workstation-config.git
+
+Alternatively clone the repo and execute locally (installation options for ZSH and Dotnet SDK will be asked via interactive prompt):
+
+```bash
+git clone https://github.com/alexhendel/ansible-workstation-config.git ws-setup && cd ws-setup && ansible-playbook -K local.yml
 ```
 
 ## Supported Distros

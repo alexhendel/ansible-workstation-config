@@ -2,18 +2,31 @@
 - name: workstation configuration
   hosts: localhost
   connection: local
+  vars_prompt:
+    - name: install_zsh
+      prompt: Do you want to install zsh (yes/NO)?
+      private: no
+    - name: install_dotnetsdk
+      prompt: Do you want to install the dotnet SDK (yes/NO)?
+      private: no
   vars:
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
     user: '{{ansible_user}}'
     user_home: '{{ansible_env.HOME}}'
+    dotnet_version: "5.0"
   roles:
     # packages
     - packages
     # get everything latest version
     - update-all
-    # packages
-    - zsh
-    - oh-my-zsh
+    # shell
+    - role: zsh
+      when: install_zsh | bool
+    - role: oh-my-zsh
+      when: install_zsh | bool
+    # dev tools
+    - role: dotnet-sdk
+      when: install_dotnetsdk | bool
     # nvm
     - node-version-manager
     # git
