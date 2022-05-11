@@ -24,9 +24,16 @@
     dest:  '~/.oh-my-zsh/custom/themes/powerlevel10k'
     depth: 1
   when: not omzconfig.stat.exists
+- name: install elessar theme
+  copy:
+    src: elessar.zsh-theme
+    dest: ~/.oh-my-zsh/themes/elessar.zsh-theme
+    mode: 0644
+    owner: '{{user}}'
+    group: '{{user}}'
 - name: set p10k theme
   lineinfile:
     path: ~/.zshrc
     regexp: '^ZSH_THEME='
-    line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+    line: 'ZSH_THEME="elessar"'
   when: not omzconfig.stat.exists

@@ -1,7 +1,7 @@
 - name: install nvm
   git:
     repo: https://github.com/nvm-sh/nvm.git
-    version: v0.38.0
+    version: v0.39.1
     dest: '{{user_home}}/.nvm'
   # zsh
 - name: .zshrc check

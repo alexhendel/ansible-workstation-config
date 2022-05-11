@@ -1,3 +1,5 @@
 alias apt='sudo apt'
 alias apt-get='sudo apt-get'
 alias sshadd='eval $(ssh-agent) && ssh-add'
+alias ll="exa --long --sort type --icons --git"
+sst() { ssh -t $@ "tmux attach -t default-session || tmux set -g default-terminal 'screen-256color' \; new -s default-session"; }

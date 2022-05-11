@@ -1,0 +1,12 @@
+- name: copy tmux config
+  copy:
+    src: tmux.conf
+    dest: '{{user_home}}/.tmux.conf'
+    owner: '{{user}}'
+    group: '{{user}}'
+    mode: 0644
+- name: clone tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: '{{user_home}}/.tmux/plugins/tpm'
+    update: yes

@@ -1,8 +1,0 @@
-- include_tasks: zshrc.yml
-- name: load ssh agent in profile
-  lineinfile:
-    path: '{{user_home}}/.profile'
-    insertbefore: BOF
-    line: 'if [ -z "$SSH_AUTH_SOCK" ] ; then eval $(ssh-agent -s);  grep -slR "PRIVATE" ~/.ssh/ | xargs ssh-add; fi'
-    state: present
-    create: yes

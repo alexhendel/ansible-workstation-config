@@ -1,6 +1,20 @@
-package_list:
+package_list_debian:
   - htop
   - ansible
   - git
   - git-lfs
   - net-tools
+  - keychain
+  - bind9-dnsutils
+  - tmux
+  - exa
+package_list_redhat:
+  - htop
+  - ansible
+  - git
+  - git-lfs
+  - net-tools
+  - keychain
+  - bind-utils
+  - tmux
+  - exa

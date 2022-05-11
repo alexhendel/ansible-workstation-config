@@ -13,10 +13,16 @@
 - name: run dotnet installation script
   command: "~/dotnet-install.sh --channel {{dotnet_version}}"
   when: not dotnet_path.stat.exists
-- name: add dotnet to $PATH
+- name: add dotnet to zsh $PATH
   become: true
   lineinfile:
-    path: "{{user_home}}/.profile"
+    path: "{{user_home}}/.zshrc"
+    line: "PATH=$PATH:{{user_home}}/.dotnet/"
+  when: not dotnet_path.stat.exists
+- name: add dotnet to bash $PATH
+  become: true
+  lineinfile:
+    path: "{{user_home}}/.bashrc"
     line: "PATH=$PATH:{{user_home}}/.dotnet/"
   when: not dotnet_path.stat.exists
 - name: remove dotnet install script

@@ -11,9 +11,9 @@
       private: no
   vars:
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
-    user: '{{ansible_user}}'
+    user: '{{ansible_user_id}}'
     user_home: '{{ansible_env.HOME}}'
-    dotnet_version: "5.0"
+    dotnet_version: "6.0"
   roles:
     # packages
     - packages
@@ -31,6 +31,6 @@
     - node-version-manager
     # git
     - git-config
-    # alias & profile
+    # add aliases
     - aliases
-    - profile
+    - tmux
