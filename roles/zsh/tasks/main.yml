@@ -10,3 +10,12 @@
     name: zsh
     update_cache: true
   when: ansible_distribution == 'Fedora'
+- name: change user shell to zsh
+  become: yes
+  user:
+    name: "{{user}}"
+    shell: /bin/zsh
+- name: create zsh config
+  file:
+    state: touch
+    path: "{{user_home}}/.zshrc"

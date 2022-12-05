@@ -3,8 +3,8 @@
 This Ansible script sets up a ZSH working environment with:
 
 - [zsh](https://github.com/zsh-users/zsh)
-- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
-- [powerlevel10k zsh theme](https://github.com/romkatv/powerlevel10k) and
+- [oh-my-posh](https://ohmyposh.dev/)
+- [custom 'horizon' posh theme](https://ohmyposh.dev/docs/themes) and
 - [nvm](https://github.com/nvm-sh/nvm)
 
 It also does:
@@ -35,4 +35,3 @@ git clone https://github.com/alexhendel/ansible-workstation-config.git ws-setup 
 - Ubuntu
 - PopOS!
 - Fedora
-/home/alex/source/ansible-workstation-config/roles/profile

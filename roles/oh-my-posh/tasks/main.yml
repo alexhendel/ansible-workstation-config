@@ -1,0 +1,49 @@
+- name: determine bin architecture
+  set_fact:
+    posh_architecture: "{{ [ansible_architecture] | map('extract', posh_architecture_map) | first }}"
+- name: download oh-my-posh
+  become: yes
+  get_url:
+    url: "{{posh_core_url}}{{posh_architecture}}"
+    dest: "{{posh_core_bin}}"
+- name: set mode for oh-my-posh
+  become: yes
+  file:
+    path: "{{posh_core_bin}}"
+    owner: root
+    group: root
+    mode: "0755"
+- name: create posh themes directory
+  file:
+    state: directory
+    path: "{{posh_theme_path}}"
+- name: download posh themes
+  get_url:
+    url: "{{posh_theme_url}}"
+    dest: "{{posh_theme_path}}/themes.zip"
+- name: unzip posh themes
+  unarchive:
+    src: "{{posh_theme_path}}/themes.zip"
+    dest: "{{posh_theme_path}}"
+- name: cleanup themes download
+  file:
+    path: "{{posh_theme_path}}/themes.zip"
+    state: absent
+- name: set theme file permissions
+  file:
+    dest: "{{ item }}"
+    mode: "0644"
+  with_fileglob:
+    - "{{posh_theme_path}}/*.omp.*"
+- name: copy horizon theme
+  copy:
+    src: horizon.omp.json
+    dest: "{{posh_theme_path}}/horizon.omp.json"
+    owner: "{{user}}"
+    group: "{{user}}"
+    mode: "0644"
+- name: set horizon theme
+  lineinfile:
+    create: yes
+    line: 'eval "$(oh-my-posh init zsh --config {{posh_theme_path}}/horizon.omp.json)"'
+    path: "{{user_home}}/.zshrc"

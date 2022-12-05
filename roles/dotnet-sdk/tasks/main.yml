@@ -18,15 +18,12 @@
   lineinfile:
     path: "{{user_home}}/.zshrc"
     line: "PATH=$PATH:{{user_home}}/.dotnet/"
-  when: not dotnet_path.stat.exists
 - name: add dotnet to bash $PATH
   become: true
   lineinfile:
     path: "{{user_home}}/.bashrc"
     line: "PATH=$PATH:{{user_home}}/.dotnet/"
-  when: not dotnet_path.stat.exists
 - name: remove dotnet install script
   file:
     path: ~/dotnet-install.sh
     state: absent
-  when: not dotnet_path.stat.exists

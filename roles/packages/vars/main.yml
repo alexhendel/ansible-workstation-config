@@ -8,6 +8,8 @@ package_list_debian:
   - bind9-dnsutils
   - tmux
   - exa
+  - wget
+  - curl
 package_list_redhat:
   - htop
   - ansible
@@ -18,3 +20,5 @@ package_list_redhat:
   - bind-utils
   - tmux
   - exa
+  - wget
+  - curl

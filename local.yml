@@ -4,16 +4,16 @@
   connection: local
   vars_prompt:
     - name: install_zsh
-      prompt: Do you want to install zsh (yes/NO)?
-      private: no
+      prompt: Do you want to install zsh (YES/no)?
+      private: yes
     - name: install_dotnetsdk
       prompt: Do you want to install the dotnet SDK (yes/NO)?
       private: no
   vars:
     ohmyzsh_installer: ~/.ohmyzsh-install.sh
-    user: '{{ansible_user_id}}'
-    user_home: '{{ansible_env.HOME}}'
-    dotnet_version: "6.0"
+    user: "{{ansible_user_id}}"
+    user_home: "{{ansible_env.HOME}}"
+    dotnet_version: "7.0"
   roles:
     # packages
     - packages
@@ -22,7 +22,7 @@
     # shell
     - role: zsh
       when: install_zsh | bool
-    - role: oh-my-zsh
+    - role: oh-my-posh
       when: install_zsh | bool
     # dev tools
     - role: dotnet-sdk

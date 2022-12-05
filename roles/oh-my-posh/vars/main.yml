@@ -1,0 +1,5 @@
+posh_architecture_map: { "aarch64": "arm64", "x86_64": "amd64" }
+posh_core_url: https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-
+posh_core_bin: /usr/local/bin/oh-my-posh
+posh_theme_url: https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip
+posh_theme_path: "{{user_home}}/.poshthemes"

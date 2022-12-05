@@ -2,3 +2,4 @@ alias dnf='sudo dnf'
 alias sshadd='eval $(ssh-agent) && ssh-add'
 alias ll="exa --long --sort type --icons --git"
 sst() { ssh -t $@ "tmux attach -t default-session || tmux set -g default-terminal 'screen-256color' \; new -s default-session"; }
+alias env-upgrade='ansible-pull -KU https://github.com/alexhendel/ansible-workstation-config.git -e install_dotnetsdk=yes -e install_zsh=yes -u {{user}}'
